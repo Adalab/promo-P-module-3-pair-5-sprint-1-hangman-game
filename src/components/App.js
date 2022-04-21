@@ -1,13 +1,26 @@
-import '../styles/main.scss';
-import { useState } from 'react';
+import "../styles/main.scss";
+import { useState } from "react";
 
 function App() {
   const [numberOfErrors, setNumberOfErrors] = useState(0);
+  const [lastLetter, setLastLetter] = useState("");
 
   function newDummieLine() {
     setNumberOfErrors(numberOfErrors + 1);
   }
   console.log(numberOfErrors);
+  function handleLastLetter(ev) {
+    setLastLetter(ev.target.value);
+    validLetter();
+  }
+  function validLetter(ev) {
+    const valueLetter = setLastLetter(ev.target.value);
+    if (valueLetter.match("[a-zA-ZñÑáéíóúÁÉÍÓÚ]") !== null) {
+      return valueLetter;
+    } else {
+      return null;
+    }
+  }
 
   return (
     <div className="page">
@@ -43,16 +56,18 @@ function App() {
             </ul>
           </div>
           <form className="form">
-            <label className="title" for="last-letter">
+            <label className="title" htmlFor="last-letter">
               Escribe una letra:
             </label>
             <input
-              autocomplete="off"
+              autoComplete="off"
               className="form__input"
-              maxlength="1"
+              maxLength="1"
               type="text"
               name="last-letter"
               id="last-letter"
+              value={lastLetter}
+              onChange={handleLastLetter}
             />
           </form>
         </section>
