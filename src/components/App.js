@@ -1,22 +1,23 @@
-import "../styles/main.scss";
-import { useState } from "react";
+import '../styles/main.scss';
+import { useState } from 'react';
 
 function App() {
   const [numberOfErrors, setNumberOfErrors] = useState(0);
-  const [lastLetter, setLastLetter] = useState("");
+  const [lastLetter, setLastLetter] = useState('');
 
   function newDummieLine() {
     setNumberOfErrors(numberOfErrors + 1);
   }
-  console.log(numberOfErrors);
   function handleLastLetter(ev) {
     setLastLetter(ev.target.value);
-    validLetter();
+
+    console.log(ev);
+
+    validLetter(ev.target.value);
   }
-  function validLetter(ev) {
-    const valueLetter = setLastLetter(ev.target.value);
-    if (valueLetter.match("[a-zA-ZñÑáéíóúÁÉÍÓÚ]") !== null) {
-      return valueLetter;
+  function validLetter(letter) {
+    if (letter.match('/[a-zA-ZñÑáéíóúÁÉÍÓÚ]/')) {
+      return letter;
     } else {
       return null;
     }
