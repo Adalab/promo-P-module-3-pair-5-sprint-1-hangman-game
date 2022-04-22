@@ -3,23 +3,25 @@ import { useState } from 'react';
 
 function App() {
   const [numberOfErrors, setNumberOfErrors] = useState(0);
-  const [lastLetter, setLastLetter] = useState('');
+  //const [lastLetter, setLastLetter] = useState('');
 
   function newDummieLine() {
     setNumberOfErrors(numberOfErrors + 1);
   }
+
   function handleLastLetter(ev) {
-    setLastLetter(ev.target.value);
-
-    console.log(ev);
-
-    validLetter(ev.target.value);
-  }
-  function validLetter(letter) {
-    if (letter.match('/[a-zA-ZñÑáéíóúÁÉÍÓÚ]/')) {
-      return letter;
+    if (validLetter(ev.target.value)) {
+      setLastLetter(ev.target.value);
     } else {
-      return null;
+      ev.target.value = '';
+    }
+  }
+
+  function validLetter(letterToTest) {
+    if (letterToTest.match('[a-zA-ZñÑáéíóúÁÉÍÓÚ]')) {
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -67,7 +69,6 @@ function App() {
               type="text"
               name="last-letter"
               id="last-letter"
-              value={lastLetter}
               onChange={handleLastLetter}
             />
           </form>
