@@ -3,7 +3,13 @@ import { useState } from 'react';
 
 function App() {
   const [numberOfErrors, setNumberOfErrors] = useState(0);
-  //const [lastLetter, setLastLetter] = useState('');
+  const [word, setWord] = useState('katakroken');
+  const [userLetters, setUserLetters] = useState('');
+  const [lastLetter, setLastLetter] = useState('');
+
+  function getWord() {
+    const randomWord = 'katakroken';
+  }
 
   function newDummieLine() {
     setNumberOfErrors(numberOfErrors + 1);
