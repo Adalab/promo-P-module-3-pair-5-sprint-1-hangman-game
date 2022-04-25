@@ -1,17 +1,15 @@
-import "../styles/main.scss";
-import { useState } from "react";
+import '../styles/main.scss';
+import { useState } from 'react';
 
 function App() {
   const [numberOfErrors, setNumberOfErrors] = useState(0);
-  const [word, setWord] = useState("katacroker");
-  const [userLetters, setUserLetters] = useState([]);
-  const [lastLetter, setLastLetter] = useState("");
-}
-function renderSolutionLetters () {
-  const wordLetters = word.split('');
-  const mappedLetters = wordLetters.map(word);
-  
-}
+  const [word, setWord] = useState('katakroken');
+  const [userLetters, setUserLetters] = useState('');
+  const [lastLetter, setLastLetter] = useState('');
+
+  function getWord() {
+    const randomWord = 'katakroken';
+  }
 
   function newDummieLine() {
     setNumberOfErrors(numberOfErrors + 1);
@@ -21,12 +19,12 @@ function renderSolutionLetters () {
     if (validLetter(ev.target.value)) {
       setLastLetter(ev.target.value);
     } else {
-      ev.target.value = "";
+      ev.target.value = '';
     }
   }
 
   function validLetter(letterToTest) {
-    if (letterToTest.match("[a-zA-ZñÑáéíóúÁÉÍÓÚ]")) {
+    if (letterToTest.match('[a-zA-ZñÑáéíóúÁÉÍÓÚ]')) {
       return true;
     } else {
       return false;
@@ -43,9 +41,17 @@ function renderSolutionLetters () {
         <section>
           <div className="solution">
             <h2 className="title">Solución:</h2>
-            {renderSolutionLetters ()}
             <ul className="letters">
-              {/*<li className="letter">_</li> AQUÍ SE PINTARÁN TANTOS LIS COMO LETRAS TENGA LA PALABRA */}
+              <li className="letter">k</li>
+              <li className="letter">a</li>
+              <li className="letter"></li>
+              <li className="letter">a</li>
+              <li className="letter">k</li>
+              <li className="letter">r</li>
+              <li className="letter"></li>
+              <li className="letter">k</li>
+              <li className="letter">e</li>
+              <li className="letter">r</li>
             </ul>
           </div>
           <div className="error">
