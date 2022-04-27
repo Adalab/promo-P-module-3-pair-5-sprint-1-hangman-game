@@ -3,13 +3,27 @@ import { useState } from 'react';
 
 function App() {
   const [numberOfErrors, setNumberOfErrors] = useState(0);
-  const [word, setWord] = useState('katakroken');
-  const [userLetters, setUserLetters] = useState('');
+  const [word, setWord] = useState('katacroker');
+  const [userLetters, setUserLetters] = useState([]);
   const [lastLetter, setLastLetter] = useState('');
 
-  function getWord() {
-    const randomWord = 'katakroken';
+  function renderSolutionLetters() {
+    const wordLetters = word.split('');
+    const mappedLetters = wordLetters.map(word);
   }
+  /*fetch(
+    'https://beta.adalab.es/curso-intensivo-fullstack-recursos/apis/random-word-v1/word.json'
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      const mappedWord = data.map((word) => {
+        return mappedWord;
+      });
+    });
+
+  function getWord() {
+    const randomWord = mappedWord.word;
+  }*/
 
   function newDummieLine() {
     setNumberOfErrors(numberOfErrors + 1);
